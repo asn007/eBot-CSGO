@@ -16,10 +16,10 @@ class UDPSocket {
     private $socket = null;
 
     public function __construct($bot_ip, $bot_port) {
-        Logger::debug("Creating $bot_ip:$bot_port");
+        Logger::debug("Creating $bot_ip (0.0.0.0):$bot_port");
         $this->socket = socket_create(AF_INET, SOCK_DGRAM, SOL_UDP);
         if ($this->socket) {
-            if (socket_bind($this->socket, $bot_ip, $bot_port)) {
+            if (socket_bind($this->socket, '0.0.0.0', $bot_port)) {
                 if (!socket_set_nonblock($this->socket)) {
                     throw new SocketException("Can't set non-block mode !");
                 }

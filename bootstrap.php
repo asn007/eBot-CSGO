@@ -109,10 +109,10 @@ class LogReceiver extends Thread {
     public function run() {
         $socket = socket_create(AF_INET, SOCK_DGRAM, SOL_UDP);
         if ($socket) {
-            if (socket_bind($socket, $this->botIp, $this->botPort)) {
+            if (socket_bind($socket, '0.0.0.0', $this->botPort)) {
                 
             } else {
-                echo "can't bind " . $this->botIp . ":" . $this->botPort . "\n";
+                echo "can't bind " . '0.0.0.0' . ":" . $this->botPort . "\n";
                 return;
             }
         } else {
