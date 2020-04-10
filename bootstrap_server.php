@@ -92,7 +92,7 @@ if (PHP_OS == "Linux") {
         1 => array("file", "websocket.log", "a"),
         2 => array("file", "websocket.error", "a")
     );
-    echo "| WebSocket server running on 0.0.0.0"
+    echo "| WebSocket server running on 0.0.0.0";
     $webSocketProcess = proc_open('node ' . __DIR__ . '/websocket_server.js ' . '0.0.0.0' . ' ' . \eBot\Config\Config::getInstance()->getBot_port(), $descriptorspec, $pipes);
     
     if (is_resource($webSocketProcess)) {
